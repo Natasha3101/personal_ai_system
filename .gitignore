@@ -52,3 +52,26 @@ site/
 # IDE files
 # .idea/
 # .vscode/
+
+# Data directories (contains user data)
+data/
+*.yaml
+!.env.example
+
+# Streamlit
+.streamlit/
+
+# GCP
+.gcloud/
+credentials.json
+key.json
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
