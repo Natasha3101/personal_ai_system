@@ -8,7 +8,7 @@ from pathlib import Path
 def main():
     """Run the Streamlit app."""
     app_path = Path(__file__).parent / "src" / "personal_ai_system" / "app.py"
-
+    port = os.environ.get("PORT", "8501")
     print("🚀 Starting Personal AI Agent System...")
     print(f"📂 App location: {app_path}")
     print("🌐 Opening browser at: http://localhost:8501")
@@ -16,9 +16,19 @@ def main():
 
     try:
         subprocess.run(
-            [sys.executable, "-m", "streamlit", "run", str(app_path)],
-            check=True,
-        )
+        [
+            sys.executable,
+            "-m",
+            "streamlit",
+            "run",
+            str(app_path),
+            "--server.port",
+            port,
+            "--server.address",
+            "0.0.0.0",
+        ],
+        check=True,
+    )
     except KeyboardInterrupt:
         print("\n👋 Shutting down gracefully...")
     except subprocess.CalledProcessError as e:
